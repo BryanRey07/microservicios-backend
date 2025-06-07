@@ -92,9 +92,3 @@ POST http://localhost:3000/api/facturar
 
 * El procesamiento paralelo está implementado mediante `worker_threads`, lo cual permite usar todos los hilos de CPU disponibles sin bloquear el hilo principal.
 * Las rutas están correctamente direccionadas gracias a la configuración de NGINX.
-
-## Evidencia requerida (sugerida)
-
-* Captura de los contenedores corriendo en Docker Desktop
-* Captura de la solicitud en Postman con respuesta exitosa
-* Captura de logs en `procesador` y `notificador`
