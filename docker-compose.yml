@@ -1,0 +1,40 @@
+services:
+  api-gateway:
+    build: ./api-gateway
+    ports:
+      - "3000:3000"
+    depends_on:
+      - procesador1
+      - procesador2
+      - notificador
+
+  procesador1:
+    build: ./procesador
+    container_name: procesador1
+    ports:
+      - "3002:3002"
+
+  procesador2:
+    build: ./procesador
+    container_name: procesador2
+    ports:
+      - "3003:3002"
+
+  notificador:
+    build: ./notificador
+    container_name: notificador
+    ports:
+      - "4001:4001"
+
+  nginx:
+    image: nginx:latest
+    container_name: nginx
+    ports:
+      - "80:80"
+    volumes:
+      - ./nginx/default.conf:/etc/nginx/conf.d/default.conf
+    depends_on:
+      - api-gateway
+      - procesador1
+      - procesador2
+      - notificador
